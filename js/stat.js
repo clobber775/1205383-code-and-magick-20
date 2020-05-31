@@ -7,6 +7,8 @@ var CLOUD_Y = 10;
 var GAP = 10;
 var FONT_GAP = 50;
 var TEXT_HEIGHT = 70;
+var TEXT_Y = 27;
+var TEXT_X = 120;
 var BAR_WIDTH = 40;
 var BAR_HEIGHT = 150;
 
@@ -27,13 +29,13 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-function getRandomInRange(min, max) {
+var getRandomNumberInRange = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
 
-function randomHsl() {
-  return 'hsl(255, ' + (getRandomInRange(10, 100) + '%') + ', 50%)';
-}
+var getRandomHslSaturation = function () {
+  return 'hsl(255, ' + (getRandomNumberInRange(1, 100) + '%') + ', 50%)';
+};
 
 
 window.renderStatistics = function (ctx, players, times) {
@@ -42,8 +44,8 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
   ctx.textBaseline = 'hanging';
-  ctx.fillText('Ура вы победили!', 120, 27);
-  ctx.fillText('Список результатов:', 120, 47);
+  ctx.fillText('Ура вы победили!', TEXT_X, TEXT_Y);
+  ctx.fillText('Список результатов:', TEXT_X, TEXT_Y + GAP * 2);
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < players.length; i++) {
@@ -53,7 +55,7 @@ window.renderStatistics = function (ctx, players, times) {
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = randomHsl();
+      ctx.fillStyle = getRandomHslSaturation();
     }
     ctx.fillRect(CLOUD_X + GAP + FONT_GAP + (FONT_GAP + BAR_WIDTH) * i, CLOUD_Y + GAP + BAR_HEIGHT + TEXT_HEIGHT, BAR_WIDTH, -(BAR_HEIGHT * times[i]) / maxTime);
 
