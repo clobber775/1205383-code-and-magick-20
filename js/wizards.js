@@ -18,7 +18,7 @@
     return arr;
   };
 
-  var userDialogElement = document.querySelector('.setup');
+  window.userDialogElement = document.querySelector('.setup');
 
   var similarListElement = document.querySelector('.setup-similar-list');
 
@@ -42,5 +42,5 @@
   }
   similarListElement.appendChild(fragment);
 
-  userDialogElement.querySelector('.setup-similar').classList.remove('hidden');
+  window.userDialogElement.querySelector('.setup-similar').classList.remove('hidden');
 })();

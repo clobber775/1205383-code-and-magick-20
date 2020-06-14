@@ -1,9 +1,6 @@
 'use strict';
 (function () {
-
-  var setupDialogElement = document.querySelector('.setup');
-  window.setupDialogElement = setupDialogElement;
-  var dialogHandle = setupDialogElement.querySelector('.upload');
+  var dialogHandle = window.userDialogElement.querySelector('.upload');
 
   dialogHandle.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
@@ -30,8 +27,8 @@
         y: moveEvt.clientY
       };
 
-      setupDialogElement.style.top = (setupDialogElement.offsetTop - shift.y) + 'px';
-      setupDialogElement.style.left = (setupDialogElement.offsetLeft - shift.x) + 'px';
+      window.userDialogElement.style.top = (window.userDialogElement.offsetTop - shift.y) + 'px';
+      window.userDialogElement.style.left = (window.userDialogElement.offsetLeft - shift.x) + 'px';
 
     };
 
@@ -53,5 +50,4 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
-
 })();

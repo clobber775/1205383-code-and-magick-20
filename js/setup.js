@@ -10,9 +10,7 @@
   var setupCloseElement = setupElement.querySelector('.setup-close');
   var nameInputElement = setupElement.querySelector('.setup-user-name');
 
-  window.WIZARD_EYES = WIZARD_EYES;
-  window.WIZARD_COATES = WIZARD_COATES;
-  window.WIZARD_FIREBALLS = WIZARD_FIREBALLS;
+
   var onPopupEscPress = function (evt) {
     if (evt.key === 'Escape') {
       evt.preventDefault();
@@ -28,8 +26,8 @@
 
   var closePopup = function () {
     setupElement.classList.add('hidden');
-    window.setupDialogElement.style.top = WINDOW_TOP_POS + 'px';
-    window.setupDialogElement.style.left = WINDOW_LEFT_POS + '%';
+    window.userDialogElement.style.top = WINDOW_TOP_POS + 'px';
+    window.userDialogElement.style.left = WINDOW_LEFT_POS + '%';
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
@@ -62,15 +60,19 @@
     });
   }, true);
 
-  var setup = document.querySelector('.setup');
+  var userDialogElement = document.querySelector('.setup');
 
-  var wizard = setup.querySelector('.wizard');
+  var wizard = userDialogElement.querySelector('.wizard');
 
   var wizardCoat = wizard.querySelector('.wizard-coat');
-  var fireball = setup.querySelector('.setup-fireball-wrap');
+  var fireball = userDialogElement.querySelector('.setup-fireball-wrap');
   var wizardEyes = wizard.querySelector('.wizard-eyes');
   window.colorize(wizardCoat, WIZARD_COATES);
   window.colorize(fireball, WIZARD_FIREBALLS);
   window.colorize(wizardEyes, WIZARD_EYES);
 
+  window.WIZARD_EYES = WIZARD_EYES;
+  window.WIZARD_COATES = WIZARD_COATES;
+  window.WIZARD_FIREBALLS = WIZARD_FIREBALLS;
+  window.userDialogElement = userDialogElement;
 })();
