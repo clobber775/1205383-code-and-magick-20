@@ -1,3 +1,4 @@
+
 'use strict';
 (function () {
   var WIZARD_EYES = ['black', 'red', 'yellow', 'green', 'blue'];
@@ -70,9 +71,16 @@
   window.colorize(wizardCoat, WIZARD_COATES);
   window.colorize(fireball, WIZARD_FIREBALLS);
   window.colorize(wizardEyes, WIZARD_EYES);
+  var formElement = document.querySelector('.setup-wizard-form');
+  formElement.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(formElement), function () {
+      userDialogElement.classList.add('hidden');
+    });
+    evt.preventDefault();
+  });
+  window.setup = {
+    userDialogElement: userDialogElement
+  };
 
-  window.WIZARD_EYES = WIZARD_EYES;
-  window.WIZARD_COATES = WIZARD_COATES;
-  window.WIZARD_FIREBALLS = WIZARD_FIREBALLS;
-  window.userDialogElement = userDialogElement;
 })();
+
