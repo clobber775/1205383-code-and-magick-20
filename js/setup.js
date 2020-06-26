@@ -1,9 +1,6 @@
 
 'use strict';
 (function () {
-  var WIZARD_EYES = ['black', 'red', 'yellow', 'green', 'blue'];
-  var WIZARD_FIREBALLS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
-  var WIZARD_COATES = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
   var WINDOW_TOP_POS = 80;
   var WINDOW_LEFT_POS = 50;
   var setupOpenElement = document.querySelector('.setup-open');
@@ -60,17 +57,7 @@
       }
     });
   }, true);
-
   var userDialogElement = document.querySelector('.setup');
-
-  var wizard = userDialogElement.querySelector('.wizard');
-
-  var wizardCoat = wizard.querySelector('.wizard-coat');
-  var fireball = userDialogElement.querySelector('.setup-fireball-wrap');
-  var wizardEyes = wizard.querySelector('.wizard-eyes');
-  window.colorize(wizardCoat, WIZARD_COATES);
-  window.colorize(fireball, WIZARD_FIREBALLS);
-  window.colorize(wizardEyes, WIZARD_EYES);
   var formElement = document.querySelector('.setup-wizard-form');
   formElement.addEventListener('submit', function (evt) {
     window.backend.save(new FormData(formElement), function () {
